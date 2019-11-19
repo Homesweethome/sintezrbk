@@ -44,7 +44,9 @@ class BaseTable extends React.Component {
                         label="Наименование" 
                         dataKey="b" 
                         cellRenderer={({cellData}) => <a 
-                            href={"https://www.alldatasheet.com/view.jsp?Searchword=" + cellData}>{cellData}</a>}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={"https://www.alldatasheet.com/view.jsp?Searchword=" + cellData} >{cellData}</a>}
                     />  
                     <Column width={128} label="Тип" dataKey="c" />  
                     <Column width={128} label="Изгот-ль" dataKey="d" />  
