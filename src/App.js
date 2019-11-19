@@ -1,12 +1,12 @@
 import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
-import './App.css';
+import Semiconductors from "./components/semiconductors";
 
 function allyProps(index) {
   return {
@@ -32,6 +32,13 @@ function TabPanel(props) {
   );
 }
 
+
+let theme = createMuiTheme({
+  palette: {
+    type: "light",
+  }
+});
+
 function App() {
   const [value, setValue] = React.useState(0);
 
@@ -39,25 +46,11 @@ function App() {
     setValue(newValue);
   };
 
-  const useStyles = makeStyles(theme => ({
-    root: {
-      backgroundColor: theme.palette.background.paper,
-      flexGrow: 1,
-    },
-  }));
-  
-  const classes = useStyles();
-  
-  const theme = useTheme();
-
   return (
-    <div className={classes.root}>
-      <AppBar position="static" color="default">
+    <ThemeProvider theme={theme}>
+      <AppBar position="static">
         <Tabs value={value} onChange={handleChange} 
-            indicatorColor="primary"
-            textColor="primary"
-            variant="fullWidth"
-            aria-label="simple tabs example">
+            variant="fullWidth">
           <Tab label="Полупроводники" {...allyProps(0)} />
           <Tab label="Установочные из-я" {...allyProps(1)} />
           <Tab label="ТДКС" {...allyProps(2)} />
@@ -65,15 +58,15 @@ function App() {
           <Tab label="Резисторы" {...allyProps(4)} />
           <Tab label="Провода, гнёзда" {...allyProps(5)} />
           <Tab label="Платы" {...allyProps(6)} />
-          <Tab label="Микросхемы" {...allyProps(6)} />
-          <Tab label="Механика" {...allyProps(6)} />
-          <Tab label="Лампы, радиолампы" {...allyProps(6)} />
-          <Tab label="Конденсаторы" {...allyProps(6)} />
-          <Tab label="Двигатели" {...allyProps(6)} />
+          <Tab label="Микросхемы" {...allyProps(7)} />
+          <Tab label="Механика" {...allyProps(8)} />
+          <Tab label="Лампы, радиолампы" {...allyProps(9)} />
+          <Tab label="Конденсаторы" {...allyProps(10)} />
+          <Tab label="Двигатели" {...allyProps(11)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        Item One
+        <Semiconductors />
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
@@ -81,7 +74,7 @@ function App() {
       <TabPanel value={value} index={2}>
         Item Three
       </TabPanel>
-    </div>
+    </ThemeProvider>
   );
 }
 
