@@ -7,6 +7,17 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
 import Semiconductors from "./components/semiconductors";
+import Boards from "./components/boards";
+import Capacitors from "./components/capacitors";
+import Circuits from "./components/circuits";
+import Engines from "./components/engines";
+import Installationproducts from "./components/installationproducts";
+import Lamps from "./components/lamps";
+import Mechanics from "./components/mechanics";
+import Phones from "./components/phones";
+import Resistors from "./components/resistors";
+import Tdks from "./components/tdks";
+import Wires from "./components/wires";
 
 function allyProps(index) {
   return {
@@ -69,10 +80,37 @@ function App() {
         <Semiconductors />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <Installationproducts/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <Tdks/>
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        <Phones/>
+      </TabPanel>
+      <TabPanel value={value} index={4}>
+        <Resistors/>
+      </TabPanel>
+      <TabPanel value={value} index={5}>
+        <Wires/>
+      </TabPanel>
+      <TabPanel value={value} index={6}>
+        <Boards/>
+      </TabPanel>
+      <TabPanel value={value} index={7}>
+        <Circuits/>
+      </TabPanel>
+      <TabPanel value={value} index={8}>
+        <Mechanics/>
+      </TabPanel>
+      <TabPanel value={value} index={9}>
+        <Lamps/>
+      </TabPanel>
+      <TabPanel value={value} index={10}>
+        <Capacitors/>
+      </TabPanel>
+      <TabPanel value={value} index={11}>
+        <Engines/>
       </TabPanel>
     </ThemeProvider>
   );

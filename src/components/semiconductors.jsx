@@ -26,7 +26,7 @@ class Semiconductors extends React.Component {
                 {data.map(row => (
                     <TableRow>
                         <TableCell>{row.a}</TableCell>
-                        <TableCell>{row.b}</TableCell>
+                        <TableCell><a href={"https://www.alldatasheet.com/view.jsp?Searchword=" + row.b}>{row.b}</a></TableCell>
                         <TableCell>{row.c}</TableCell>
                         <TableCell>{row.d}</TableCell>
                         <TableCell>{row.e}</TableCell>
