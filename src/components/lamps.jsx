@@ -1,42 +1,31 @@
 import React from "react";
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+import {Column, Table, AutoSizer } from "react-virtualized";
 
 import data from '../data/lamps.json';
+import 'react-virtualized/styles.css';
 
 class Lamps extends React.Component {
     render() {
-        return <Table size="small">
-            <TableHead>
-                <TableRow>
-                    <TableCell>Номер</TableCell>
-                    <TableCell>Наименование</TableCell>
-                    <TableCell>Тип</TableCell>
-                    <TableCell>Изгот-ль</TableCell>
-                    <TableCell>Ед.</TableCell>
-                    <TableCell>Кол-во</TableCell>
-                    <TableCell>Цена</TableCell>
-                    <TableCell>Доп. информация</TableCell>
-                </TableRow>
-            </TableHead>
-            <TableBody>
-                {data.map(row => (
-                    <TableRow>
-                        <TableCell>{row.a}</TableCell>
-                        <TableCell><a href={"https://www.alldatasheet.com/view.jsp?Searchword=" + row.b}>{row.b}</a></TableCell>
-                        <TableCell>{row.c}</TableCell>
-                        <TableCell>{row.d}</TableCell>
-                        <TableCell>{row.e}</TableCell>
-                        <TableCell>{row.f}</TableCell>
-                        <TableCell>{row.g}</TableCell>
-                        <TableCell>{row.h}</TableCell>
-                    </TableRow> 
-                ))}
-            </TableBody>
-        </Table>
+        return <AutoSizer disableHeight>
+            {({width}) => (
+                <Table 
+                headerHeight={20}
+                rowHeight={30}
+                height={800}
+                width={width}
+                rowCount={data.length}
+                rowGetter={({index}) => data[index]}>
+                    <Column width={128} label="Номер" dataKey="a" />    
+                    <Column width={128} label="Наименование" dataKey="b" />  
+                    <Column width={128} label="Тип" dataKey="c" />  
+                    <Column width={128} label="Изгот-ль" dataKey="d" />  
+                    <Column width={128} label="Ед." dataKey="e" />  
+                    <Column width={128} label="Кол-во" dataKey="f" />  
+                    <Column width={128} label="Цена" dataKey="g" />  
+                    <Column width={128} label="Доп. информация" dataKey="h" />                
+                </Table>    
+            )}
+            </AutoSizer>        
     }
 }
 
